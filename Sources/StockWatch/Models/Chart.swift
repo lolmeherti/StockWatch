@@ -7,29 +7,61 @@
 
 import Foundation
 
-public struct ChartData: Decodable {
+public struct ChartResponse: Decodable {
+    
+    public let data: [ChartData]?
+    public let error: ErrorResponse?
+    
+    enum CodingKeys: CodingKey {
+        case chart
+    }
+    
+    enum ChartKeys: CodingKey {
+        case result
+        case error
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let chartContainer = try? container.nestedContainer(keyedBy: ChartKeys.self, forKey: .chart) {
+            data = try? chartContainer.decodeIfPresent([ChartData].self, forKey: .result)
+            error = try? chartContainer.decodeIfPresent(ErrorResponse.self, forKey: .error)
+        } else {
+            data = nil
+            error = nil
+        }
+    }
+    
+}
+
+public struct ChartData: Decodable
+{
     
     public let meta: ChartMeta
     public let indicators: [Indicator]
     
-    enum CodingKeys: CodingKey {
+    enum CodingKeys: CodingKey
+    {
         case meta
         case timestamp
         case indicators
     }
     
-    enum IndicatorsKeys: CodingKey {
+    enum IndicatorsKeys: CodingKey
+    {
         case quote
     }
     
-    enum QuoteKeys: CodingKey {
+    enum QuoteKeys: CodingKey
+    {
         case high
         case close
         case low
         case open
     }
     
-    public init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws
+    {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         meta = try container.decode(ChartMeta.self, forKey: .meta)
         
@@ -58,7 +90,8 @@ public struct ChartData: Decodable {
         }
     }
     
-    public init(meta: ChartMeta, indicators: [Indicator]) {
+    public init(meta: ChartMeta, indicators: [Indicator])
+    {
         self.meta = meta
         self.indicators = indicators
     }
