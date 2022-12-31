@@ -4,6 +4,14 @@ This is an API built around Yahoo!Finance.
 
 ### Documentation
 
+Compatibility
+
+```
+    platforms:[
+        .iOS(.v13), .macOS(.v11), .macCatalyst(.v13), .tvOS(.v13), .watchOS(.v8)
+    ]
+```
+
 ### Searching for a ticker:
 
 ```
