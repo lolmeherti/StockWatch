@@ -64,6 +64,8 @@ You can pass multiple tickers as a string, separated by commas with no white spa
 
 ### Last but not least, fetching data for a chart
 
+Must pass a ticker and a range
+
 ```
 stocksAPI.fetchChartData(symbol: "TSLA", range: .oneDay)
 ```
