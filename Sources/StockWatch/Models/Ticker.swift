@@ -36,8 +36,8 @@ public struct Ticker: Codable, Identifiable, Hashable, Equatable
     
     public let symbol: String
     public let quoteType: String? //equity
-    public let shortName: String? //APPL
-    public let longName: String? //APPLE
+    public let shortname: String? //APPL
+    public let longname: String? //APPLE
     public let sector: String?
     public let industry: String?
     public let exchDisp: String? // this is the exchange market. NYSE, NASDAQ..
@@ -45,8 +45,8 @@ public struct Ticker: Codable, Identifiable, Hashable, Equatable
     public init(symbol: String, quoteType: String?, shortName: String?, longName: String?, sector: String?, industry: String?, exchDisp: String?) {
         self.symbol = symbol
         self.quoteType = quoteType
-        self.shortName = shortName
-        self.longName = longName
+        self.shortname = shortName
+        self.longname = longName
         self.sector = sector
         self.industry = industry
         self.exchDisp = exchDisp
