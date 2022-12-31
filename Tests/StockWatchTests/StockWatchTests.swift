@@ -6,6 +6,6 @@ final class StockWatchTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(StockWatch().text, "Hello, World!")
+//        XCTAssertEqual(StockWatch().text, "Hello, World!")
     }
 }
