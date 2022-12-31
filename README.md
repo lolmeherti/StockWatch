@@ -1,3 +1,3 @@
-# StockWatch
+# StockWatchAPI
 
-A description of this package.
+This is an API built around Yahoo!Finance.
