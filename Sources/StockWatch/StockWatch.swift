@@ -1,6 +1,5 @@
 import Foundation
 
-
 public protocol IStocksAPI {
     func fetchChartData(tickerSymbol: String, range: ChartRange) async throws -> ChartData?
     func fetchChartRawData(symbol: String, range: ChartRange) async throws -> (Data, URLResponse)
@@ -51,7 +50,7 @@ public struct StockWatch: IStocksAPI {
     
     public func searchTickers(query: String, isEquityTypeOnly: Bool = true) async throws -> [Ticker] {
         guard let url = urlForSearchTickers(query: query) else { throw APIServiceError.invalidURL }
-        let (resp, statusCode): (SearchTickers, Int) = try await fetch(url: url)
+        let (resp, statusCode): (SearchTickersResponse, Int) = try await fetch(url: url)
         if let error = resp.error {
             throw APIServiceError.httpStatusCodeFailed(statusCode: statusCode, error: error)
         }
