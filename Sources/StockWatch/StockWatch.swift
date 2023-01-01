@@ -76,12 +76,13 @@ public struct StockWatch {
             throw APIServiceError.httpStatusCodeFailed(statusCode: statusCode, error: error)
         }
         
+        let data = response.data ?? []
+        
         if(isEquityTypeOnly)
         {
-            return response.data ?? []
-                .filter{($0.quoteType ?? "").localizedCaseInsensitiveCompare("EQUITY") == .orderedSame}
+            return data.filter { ($0.quoteType ?? "").localizedCaseInsensitiveCompare("equity") == .orderedSame }
         } else {
-            return response.data ?? []
+            return data
         }
     }
     
