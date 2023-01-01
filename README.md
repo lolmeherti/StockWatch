@@ -8,7 +8,7 @@ Compatibility
 
 ```
     platforms:[
-        .iOS(.v13), .macOS(.v11), .macCatalyst(.v13), .tvOS(.v13), .watchOS(.v8)
+        .iOS(.v13), .macOS(.v12), .macCatalyst(.v13), .tvOS(.v13), .watchOS(.v8)
     ]
 ```
 
@@ -81,15 +81,15 @@ stocksAPI.fetchChartData(symbol: "TSLA", range: .oneDay)
 The enum ranges can be
 
 ```
-.oneDay = "1d"
-.oneWeek = "5d"
-.oneMonth = "1mo"
-.threeMonths = "3mo"
-.sixMonths = "6mo"
-.ytd = "ytd"
-.oneYear = "1y"
-.twoYears = "2y"
-.fiveYears = "5y"
-.tenYears = "10y"
-.max = "max"
+    .oneDay = "1d"
+    .oneWeek = "5d"
+    .oneMonth = "1mo"
+    .threeMonths = "3mo"
+    .sixMonths = "6mo"
+    .ytd = "ytd"
+    .oneYear = "1y"
+    .twoYears = "2y"
+    .fiveYears = "5y"
+    .tenYears = "10y"
+    .max = "max"
 ```
