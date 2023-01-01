@@ -11,26 +11,28 @@ import StockWatch
 @main
 struct ExecutableAPI
 {
-    static let stocksAPI = StockWatch()
-    
-    static func main() async throws {
-        if #available(macOS 12.0, *) {
-            
-//            do {
-//                let quotes = try await stocksAPI.fetchQuotes(symbols: "TSLA")
-//                print(quotes)
-//                
-//                let tickers = try await stocksAPI.searchTickers(query: "tesla")
-//                print(tickers)
-//
-//                let chart = try await stocksAPI.fetchChartData(symbol: "TSLA", range: .oneDay)
-//                print(chart ?? [])
-//            } catch {
-//                print(error.localizedDescription)
-//            }
+    private static let api = StockWatch()
+    static func main() async {
+        do {
+            // Fetch AAPL stocks last 1 day
+            let apple1dChart = try await api
+                .fetchChartData(tickerSymbol: "AAPL", range: .oneDay)
 
-        } else {
-            throw APIServiceError.invalidResponseType//temporary solution
+            print(apple1dChart ?? "Not Found")
+            
+            // Search Ticker using "TESLA" as Query
+            let tickers = try await api
+                .searchTickers(query: "TESLA")
+            print(tickers)
+            
+            // Fetch Quote Detail for multiple symbols
+            // AAPL, TSLA, GOOG, MSFT
+            let quotes = try await api
+                .fetchQuotes(symbols: "AAPL,TSLA,GOOG,MSFT")
+            print(quotes)
+            
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }
